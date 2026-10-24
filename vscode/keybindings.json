@@ -18,10 +18,6 @@
     "command": "-workbench.action.findInFiles"
   },
   {
-    "key": "alt+cmd+i",
-    "command": "sapling.open-isl"
-  },
-  {
     "key": "cmd+k s",
     "command": "workbench.action.files.saveWithoutFormatting"
   },

@@ -3,7 +3,6 @@ code --install-extension anthropic.claude-code
 code --install-extension brian-anders.sublime-duplicate-text
 code --install-extension britesnow.vscode-toggle-quotes
 code --install-extension fabiospampinato.vscode-open-in-github
-code --install-extension meta.sapling-scm
 code --install-extension mk12.better-git-line-blame
 code --install-extension ryuta46.multi-command
 code --install-extension sleistner.vscode-fileutils
