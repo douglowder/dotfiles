@@ -1,2 +1,2 @@
 [devroot]
-	vcs = sapling
+	vcs = git

@@ -1,7 +1,7 @@
 [user]
-	name = Alex Hunt
-	email = hello@alexhunt.dev
-	signingkey = 1251AC874D8A26D6FE585FFF25447D819EB34F4C
+	name = Douglas Lowder
+	email = douglowder@mac.com
+	signingkey = E0B562E24077CF3A303D033E20BBA31CBEC1B593
 [includeIf "hasconfig:remote.*.url:git@github.com:expo/**"]
 	path = .gitconfig-expo
 [includeIf "hasconfig:remote.*.url:https://github.com/expo/**"]
