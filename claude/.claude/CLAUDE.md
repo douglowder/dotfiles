@@ -6,6 +6,7 @@
 
 - Use American English for artifacts: code, comments, and docs.
 - Do not hard-wrap text bodies (commit messages, Markdown, etc.). Let each paragraph be a single long line. Exception: match existing style in the file or codebase.
+- The 100-character line limit applies to code only, not to Markdown or commit messages.
 - When opening with a Smart Brevity lede — a short label followed by a colon — capitalize both the label and the first word after it: "Note: Existing callers are unaffected", not "Note: existing callers are unaffected".
 - Describe technical behavior literally, as cause and effect. No personification or narrative flourish: "`read` blocks, since the PTY never sends input", not "waits for an answer nobody gives".
 - In commit messages, PR descriptions and comments, and Linear issues, write high level and lean on bullets: a framing sentence, then short bullets. Leave out file paths, function names, version detail and test minutiae unless the reader acts on them.
@@ -22,7 +23,8 @@
 - Use `import type` for type-only imports.
 - Do not add `@ts-ignore`, `@ts-expect-error`, or `$FlowFixMe` without a comment explaining why.
 - Do not use `any` — prefer `unknown`, proper generics, or a specific type.
-- Prefer `test()` over `it()` for Jest tests.
+- Prefer `test()` over `it()` in tests.
+- Use the package manager, linter, formatter and test runner the repo already uses, as its lockfile, config and `package.json` scripts show (expo/expo: pnpm, oxlint, oxfmt). The global JavaScript tooling defaults apply only where a repo sets none, such as a new project.
 - When marking code sections, use `// #region` / `// #endregion` pairs. Keep blank lines around the code inside a region, but no blank line between an `#endregion` and the next `#region`.
 
 ### Comments and docs
@@ -35,33 +37,23 @@
 - **New tables:** Use `---` (no padding) in separator cells; do not align columns.
 - **Existing tables:** Preserve column widths and separator style. Only change cell content unless structure is explicitly wrong.
 
-### Android/Kotlin
-
-- Use `Log.d(ReactConstants.TAG, "[PREFIX] message")` — import `com.facebook.react.common.ReactConstants`.
-
-### iOS/ObjC++
-
-- Use `RCTLog` macros for logging, not `NSLog`.
-
 ### Swift
 
 - Write doc comments with `///`, not `/** */`.
 
 ## Workflow
 
-- In Sapling/hg repos, run `hg addremove --similarity 50` after adding, deleting, or moving files. This keeps the working copy status accurate.
-- Update Jest snapshots with `-u` when changes are intentional, and call them out in the summary.
+- Update test snapshots when changes are intentional, and call them out in the summary.
 
 ### Commits
 
 - Do not create or amend commits unless explicitly asked.
-- Always use the `/commit-msg` skill to generate commit messages (git or hg/sl).
+- Always use the `/commit-msg` skill to generate commit messages.
 - When amending a commit, also update the commit message to reflect the new changes.
-- In hg/sl repos, Phabricator is the source of truth for commit messages. When editing a message, always `jf sync` first to pull the latest, then propagate changes back via `jf submit --draft --update-fields`.
+- Pull requests go to GitHub. Once a PR is open, its description on GitHub is the source of truth for the message body.
 
 ### Build & verification
 
-- Use `buck2 build` for iOS and Android native targets, not `buck`.
-- Run the specific test file you changed, not the full suite: `yarn jest path/to/file.test.ts`.
+- Run the specific test file you changed with the repo's test runner, not the full suite.
 - Run lint and typecheck before considering a task complete.
 - Never set `CI` to silence a prompt: tools bundle unrelated behavior behind it, such as Expo, Jest, and Vitest disabling file watching. Redirect instead (`cmd < /dev/null > out.log 2>&1 &`), or use a tool's single-purpose variable (`GH_PROMPT_DISABLED`, `NO_COLOR`, `EXPO_NO_QR_CODE`).
