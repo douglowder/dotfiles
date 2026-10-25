@@ -1,2 +1,3 @@
 [devroot]
 	branchPrefix = doug/
+	baseRemote = origin
