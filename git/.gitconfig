@@ -6,6 +6,10 @@
 	path = .gitconfig-expo
 [includeIf "hasconfig:remote.*.url:https://github.com/expo/**"]
 	path = .gitconfig-expo
+[includeIf "hasconfig:remote.*.url:git@github.com:react-native-tvos/**"]
+	path = .gitconfig-react-native-tvos
+[includeIf "hasconfig:remote.*.url:https://github.com/react-native-tvos/**"]
+	path = .gitconfig-react-native-tvos
 [includeIf "hasconfig:remote.*.url:git@github.com:react/**"]
 	path = .gitconfig-react
 [includeIf "hasconfig:remote.*.url:https://github.com/react/**"]
